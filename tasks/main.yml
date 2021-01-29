@@ -3,6 +3,7 @@
 - name: Install required packages
   loop:
     - mailutils
+    - bsd-mailx
   package:
     name: "{{ item }}"
     state: present
