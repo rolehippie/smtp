@@ -1,0 +1,3 @@
+{% for item in smtp_default_aliases + smtp_extra_aliases %}
+{{ item.alias }}: {{ item.recipient }}
+{% endfor %}

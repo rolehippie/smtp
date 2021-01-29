@@ -1,0 +1,6 @@
+{% for item in smtp_default_services + smtp_extra_services | sort(attribute='weight') %}
+{{ item.service }} {{ item.type }} {{ item.private if item.private is defined else '-' }} {{ item.unpriv if item.unpriv is defined else '-' }} {{ item.chroot if item.chroot is defined else '-' }} {{ item.wakeup if item.wakeup is defined else '-' }} {{ item.maxproc if item.maxproc is defined else '-' }} {{ item.command }}
+{% for arg in item.args | default([]) %}
+  {{ arg }}
+{% endfor %}
+{% endfor %}

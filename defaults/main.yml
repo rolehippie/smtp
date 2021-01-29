@@ -1,0 +1,248 @@
+# Standards: 1.2
+---
+# @var smtp_hostname:description: Hostname written to postfix config
+smtp_hostname: "{{ ansible_fqdn }}"
+
+# @var smtp_default_destinations:description: List of default postfix destinations
+smtp_default_destinations:
+  - $myhostname
+  - localhost.$mydomain
+  - localhost
+
+# @var smtp_extra_destinations:description: List of extra postfix destinations
+smtp_extra_destinations: []
+
+# @var smtp_default_networks:description: List of default postfix networks
+smtp_default_networks:
+  - 127.0.0.0/8
+
+# @var smtp_extra_networks:description: List of extra postfix networks
+smtp_extra_networks: []
+
+# @var smtp_default_relayhosts:description: List of default postfix relayhosts
+smtp_default_relayhosts: []
+
+# @var smtp_extra_relayhosts:description: List of extra postfix relayhosts
+smtp_extra_relayhosts: []
+
+# @var smtp_extra_relayhosts:description: List of default mail aliases
+smtp_default_aliases:
+  - alias: mailer-daemon
+    recipient: postmaster
+  - alias: postmaster
+    recipient: root
+  - alias: nobody
+    recipient: root
+  - alias: hostmaster
+    recipient: root
+  - alias: usenet
+    recipient: root
+  - alias: news
+    recipient: root
+  - alias: webmaster
+    recipient: root
+  - alias: www
+    recipient: root
+  - alias: ftp
+    recipient: root
+  - alias: abuse
+    recipient: root
+  - alias: noc
+    recipient: root
+  - alias: security
+    recipient: root
+
+# @var smtp_extra_relayhosts:description: List of extra mail aliases
+smtp_extra_aliases: []
+
+# @var smtp_tls_ca_path:description: Path to directory containing CAs
+smtp_tls_ca_path: /etc/ssl/certs
+
+# @var smtp_tls_cert_file:description: Path to TLS cert
+smtp_tls_cert_file: /etc/ssl/certs/ssl-cert-snakeoil.pem
+
+# @var smtp_tls_key_file:description: Path to TLS key
+smtp_tls_key_file: /etc/ssl/private/ssl-cert-snakeoil.key
+
+# @var smtp_tls_security_level:description: Security level for TLS
+smtp_tls_security_level: may
+
+# @var smtp_relay_restrictions:description: List of relay restrictions
+smtp_relay_restrictions:
+  - permit_mynetworks
+  - permit_sasl_authenticated
+  - defer_unauth_destination
+
+# @var smtp_dynamic_maps:description: List of dynamic map definitions
+# @var smtp_dynamic_maps:example: >
+# smtp_dynamic_maps:
+#   - type: sqlite
+#     soname: smtp-sqlite.so.1.0.1
+#     dict: dict_sqlite_open
+#   - type: example
+#     soname: smtp-example.so.1.0.0
+#     dict: dict_example_open
+#     mkmap: example
+# @end
+smtp_dynamic_maps: []
+
+# @var smtp_default_master:description: List of default postfix services
+smtp_default_services:
+  - service: smtp
+    weight: 5
+    type: inet
+    private: n
+    chroot: y
+    command: smtpd
+  - service: pickup
+    weight: 10
+    type: unix
+    private: n
+    chroot: y
+    wakeup: 60
+    maxproc: 1
+    command: pickup
+  - service: cleanup
+    weight: 15
+    type: unix
+    private: n
+    chroot: y
+    maxproc: 0
+    command: cleanup
+  - service: qmgr
+    weight: 20
+    type: unix
+    private: n
+    chroot: n
+    wakeup: 300
+    maxproc: 1
+    command: qmgr
+  - service: tlsmgr
+    weight: 25
+    type: unix
+    chroot: y
+    wakeup: 1000?
+    maxproc: 1
+    command: tlsmgr
+  - service: rewrite
+    weight: 25
+    type: unix
+    chroot: y
+    command: trivial-rewrite
+  - service: bounce
+    weight: 30
+    type: unix
+    chroot: y
+    maxproc: 0
+    command: bounce
+  - service: defer
+    weight: 35
+    type: unix
+    chroot: y
+    maxproc: 0
+    command: bounce
+  - service: trace
+    weight: 40
+    type: unix
+    chroot: y
+    maxproc: 0
+    command: bounce
+  - service: verify
+    weight: 45
+    type: unix
+    chroot: y
+    maxproc: 1
+    command: verify
+  - service: flush
+    weight: 50
+    type: unix
+    private: n
+    chroot: y
+    wakeup: 1000?
+    maxproc: 0
+    command: flush
+  - service: proxymap
+    weight: 55
+    type: unix
+    chroot: n
+    command: proxymap
+  - service: proxywrite
+    weight: 60
+    type: unix
+    chroot: n
+    maxproc: 1
+    command: proxymap
+  - service: smtp
+    weight: 65
+    type: unix
+    chroot: y
+    command: smtp
+  - service: relay
+    weight: 70
+    type: unix
+    chroot: y
+    command: smtp
+    args:
+      - -o syslog_name=postfix/$service_name
+  - service: showq
+    weight: 75
+    type: unix
+    private: n
+    chroot: y
+    command: showq
+  - service: error
+    weight: 80
+    type: unix
+    chroot: y
+    command: error
+  - service: retry
+    weight: 85
+    type: unix
+    chroot: y
+    command: error
+  - service: discard
+    weight: 90
+    type: unix
+    chroot: y
+    command: discard
+  - service: local
+    weight: 95
+    type: unix
+    unpriv: n
+    chroot: n
+    command: local
+  - service: virtual
+    weight: 100
+    type: unix
+    unpriv: n
+    chroot: n
+    command: virtual
+  - service: lmtp
+    weight: 105
+    type: unix
+    chroot: y
+    command: lmtp
+  - service: anvil
+    weight: 110
+    type: unix
+    chroot: y
+    maxproc: 1
+    command: anvil
+  - service: scache
+    weight: 115
+    type: unix
+    chroot: y
+    maxproc: 1
+    command: scache
+  - service: postlog
+    weight: 120
+    type: unix-dgram
+    private: n
+    chroot: n
+    maxproc: 1
+    command: postlogd
+
+# @var smtp_extra_master:description: List of extra postfix services
+smtp_extra_services: []
+
+...
