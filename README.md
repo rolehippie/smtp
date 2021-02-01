@@ -27,6 +27,7 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
   * [smtp_extra_relayhosts](#smtp_extra_relayhosts)
   * [smtp_extra_services](#smtp_extra_services)
   * [smtp_hostname](#smtp_hostname)
+  * [smtp_match_destinations](#smtp_match_destinations)
   * [smtp_relay_restrictions](#smtp_relay_restrictions)
   * [smtp_tls_ca_path](#smtp_tls_ca_path)
   * [smtp_tls_cert_file](#smtp_tls_cert_file)
@@ -72,6 +73,19 @@ smtp_default_aliases:
     recipient: root
 ```
 
+#### Example usage
+
+```YAML
+smtp_default_aliases:
+  - alias: root
+    recipient: user1@example.com
+  - alias: postmaster
+    recipients:
+      - user1@example.com
+      - user2@example.com
+      - user3@example.com
+```
+
 ### smtp_default_destinations
 
 List of default postfix destinations
@@ -83,6 +97,7 @@ smtp_default_destinations:
   - $myhostname
   - localhost.$mydomain
   - localhost
+  - pcre:/etc/postfix/destinations.cf
 ```
 
 ### smtp_default_master
@@ -304,6 +319,19 @@ smtp_dynamic_maps:
 smtp_extra_aliases: []
 ```
 
+#### Example usage
+
+```YAML
+smtp_extra_aliases:
+  - alias: root
+    recipient: user1@example.com
+  - alias: postmaster
+    recipients:
+      - user1@example.com
+      - user2@example.com
+      - user3@example.com
+```
+
 ### smtp_extra_destinations
 
 List of extra postfix destinations
@@ -354,6 +382,23 @@ Hostname written to postfix config
 
 ```YAML
 smtp_hostname: '{{ ansible_fqdn }}'
+```
+
+### smtp_match_destinations
+
+List of regexp matching destinations
+
+#### Default value
+
+```YAML
+smtp_match_destinations: []
+```
+
+#### Example usage
+
+```YAML
+smtp_match_destinations:
+  - /^.*\.example\.com$/
 ```
 
 ### smtp_relay_restrictions

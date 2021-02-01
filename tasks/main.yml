@@ -3,6 +3,7 @@
 - name: Install required packages
   loop:
     - postfix
+    - postfix-pcre
     - mailutils
     - bsd-mailx
   package:
@@ -17,6 +18,15 @@
   template:
     src: aliases.j2
     dest: /etc/aliases
+  tags:
+    - smtp
+
+- name: Write destinations config
+  notify:
+    - Restart postfix
+  template:
+    src: destinations.j2
+    dest: /etc/postfix/destinations.cf
   tags:
     - smtp
 
