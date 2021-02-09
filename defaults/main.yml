@@ -268,7 +268,7 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ True if ansible_distribution_version is version('20.04' '>=') else False }}"
+    enabled: "{{ True if ansible_distribution_version is version('20.04', '>=') else False }}"
 
 # @var smtp_extra_master:description: List of extra postfix services
 smtp_extra_services: []
