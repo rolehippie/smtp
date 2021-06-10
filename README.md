@@ -1,6 +1,6 @@
 # smtp
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp) [![Build Status](https://img.shields.io/drone/build/rolehippie/smtp/master?logo=drone)](https://cloud.drone.io/rolehippie/smtp) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/smtp)](https://github.com/rolehippie/smtp/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp) [![Testing Build](https://github.com/rolehippie/smtp/workflows/testing/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/smtp/workflows/readme/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/smtp/workflows/galaxy/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/smtp)](https://github.com/rolehippie/smtp/blob/master/LICENSE) 
 
 Ansible role to install Postfix as pure SMTP server. 
 
@@ -284,7 +284,7 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ True if ansible_distribution_version is version('20.04' '>=') else\
+    enabled: "{{ True if ansible_distribution_version is version('20.04', '>=') else\
       \ False }}"
 ```
 
