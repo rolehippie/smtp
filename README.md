@@ -1,41 +1,42 @@
 # smtp
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp) [![Testing Build](https://github.com/rolehippie/smtp/workflows/testing/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/smtp/workflows/readme/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/smtp/workflows/galaxy/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/smtp)](https://github.com/rolehippie/smtp/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp) [![Testing Build](https://github.com/rolehippie/smtp/workflows/testing/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/smtp/workflows/readme/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/smtp/workflows/galaxy/badge.svg)](https://github.com/rolehippie/smtp/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/smtp)](https://github.com/rolehippie/smtp/blob/master/LICENSE)
 
-Ansible role to install Postfix as pure SMTP server. 
+Ansible role to install Postfix as pure SMTP server.
 
-## Sponsor 
+## Sponsor
 
-[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu) 
+[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
 
 Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
 
 ## Table of content
 
-* [Default Variables](#default-variables)
-  * [smtp_default_aliases](#smtp_default_aliases)
-  * [smtp_default_destinations](#smtp_default_destinations)
-  * [smtp_default_master](#smtp_default_master)
-  * [smtp_default_networks](#smtp_default_networks)
-  * [smtp_default_relayhosts](#smtp_default_relayhosts)
-  * [smtp_default_services](#smtp_default_services)
-  * [smtp_dynamic_maps](#smtp_dynamic_maps)
-  * [smtp_extra_aliases](#smtp_extra_aliases)
-  * [smtp_extra_destinations](#smtp_extra_destinations)
-  * [smtp_extra_master](#smtp_extra_master)
-  * [smtp_extra_networks](#smtp_extra_networks)
-  * [smtp_extra_relayhosts](#smtp_extra_relayhosts)
-  * [smtp_extra_services](#smtp_extra_services)
-  * [smtp_hostname](#smtp_hostname)
-  * [smtp_match_destinations](#smtp_match_destinations)
-  * [smtp_relay_restrictions](#smtp_relay_restrictions)
-  * [smtp_tls_ca_path](#smtp_tls_ca_path)
-  * [smtp_tls_cert_file](#smtp_tls_cert_file)
-  * [smtp_tls_key_file](#smtp_tls_key_file)
-  * [smtp_tls_security_level](#smtp_tls_security_level)
-* [Dependencies](#dependencies)
-* [License](#license)
-* [Author](#author)
+- [Default Variables](#default-variables)
+  - [smtp_default_aliases](#smtp_default_aliases)
+  - [smtp_default_destinations](#smtp_default_destinations)
+  - [smtp_default_master](#smtp_default_master)
+  - [smtp_default_networks](#smtp_default_networks)
+  - [smtp_default_relayhosts](#smtp_default_relayhosts)
+  - [smtp_default_services](#smtp_default_services)
+  - [smtp_dynamic_maps](#smtp_dynamic_maps)
+  - [smtp_extra_aliases](#smtp_extra_aliases)
+  - [smtp_extra_destinations](#smtp_extra_destinations)
+  - [smtp_extra_master](#smtp_extra_master)
+  - [smtp_extra_networks](#smtp_extra_networks)
+  - [smtp_extra_relayhosts](#smtp_extra_relayhosts)
+  - [smtp_extra_services](#smtp_extra_services)
+  - [smtp_hostname](#smtp_hostname)
+  - [smtp_match_destinations](#smtp_match_destinations)
+  - [smtp_relay_restrictions](#smtp_relay_restrictions)
+  - [smtp_tls_ca_path](#smtp_tls_ca_path)
+  - [smtp_tls_cert_file](#smtp_tls_cert_file)
+  - [smtp_tls_key_file](#smtp_tls_key_file)
+  - [smtp_tls_security_level](#smtp_tls_security_level)
+- [Discovered Tags](#discovered-tags)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -454,9 +455,14 @@ Security level for TLS
 smtp_tls_security_level: may
 ```
 
+## Discovered Tags
+
+**_smtp_**
+
+
 ## Dependencies
 
-* [rolehippie.docker](https://github.com/rolehippie/docker)
+- [rolehippie.docker](https://github.com/rolehippie/docker)
 
 ## License
 
