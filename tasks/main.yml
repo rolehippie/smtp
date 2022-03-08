@@ -18,6 +18,9 @@
   template:
     src: aliases.j2
     dest: /etc/aliases
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - smtp
 
@@ -27,6 +30,9 @@
   template:
     src: destinations.j2
     dest: /etc/postfix/destinations.cf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - smtp
 
@@ -36,6 +42,9 @@
   template:
     src: dynamicmaps.j2
     dest: /etc/postfix/dynamicmaps.cf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - smtp
 
@@ -45,6 +54,9 @@
   template:
     src: main.j2
     dest: /etc/postfix/main.cf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - smtp
 
@@ -54,6 +66,9 @@
   template:
     src: master.j2
     dest: /etc/postfix/master.cf
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
   tags:
     - smtp
 
