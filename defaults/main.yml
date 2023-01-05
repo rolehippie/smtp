@@ -273,4 +273,7 @@ smtp_default_services:
 # @var smtp_extra_master:description: List of extra postfix services
 smtp_extra_services: []
 
+# @var smtp_myorigin:description: Origin used by postfix
+smtp_myorigin: /etc/mailname
+
 ...

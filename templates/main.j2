@@ -1,6 +1,6 @@
 myhostname = {{ smtp_hostname }}
 mydestination = {{ (smtp_default_destinations + smtp_extra_destinations) | join(', ') }}
-myorigin = /etc/mailname
+myorigin = {{ smtp_myorigin }}
 mynetworks = {{ (smtp_default_networks + smtp_extra_networks) | join(' ') }}
 
 smtpd_banner = $myhostname ESMTP $mail_name
