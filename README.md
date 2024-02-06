@@ -146,7 +146,7 @@ smtp_default_services:
     type: inet
     private: n
     chroot: y
-    command: smtpd
+    ansible.builtin.command: smtpd
   - service: pickup
     weight: 10
     type: unix
@@ -154,14 +154,14 @@ smtp_default_services:
     chroot: y
     wakeup: 60
     maxproc: 1
-    command: pickup
+    ansible.builtin.command: pickup
   - service: cleanup
     weight: 15
     type: unix
     private: n
     chroot: y
     maxproc: 0
-    command: cleanup
+    ansible.builtin.command: cleanup
   - service: qmgr
     weight: 20
     type: unix
@@ -169,43 +169,43 @@ smtp_default_services:
     chroot: n
     wakeup: 300
     maxproc: 1
-    command: qmgr
+    ansible.builtin.command: qmgr
   - service: tlsmgr
     weight: 25
     type: unix
     chroot: y
     wakeup: 1000?
     maxproc: 1
-    command: tlsmgr
+    ansible.builtin.command: tlsmgr
   - service: rewrite
     weight: 25
     type: unix
     chroot: y
-    command: trivial-rewrite
+    ansible.builtin.command: trivial-rewrite
   - service: bounce
     weight: 30
     type: unix
     chroot: y
     maxproc: 0
-    command: bounce
+    ansible.builtin.command: bounce
   - service: defer
     weight: 35
     type: unix
     chroot: y
     maxproc: 0
-    command: bounce
+    ansible.builtin.command: bounce
   - service: trace
     weight: 40
     type: unix
     chroot: y
     maxproc: 0
-    command: bounce
+    ansible.builtin.command: bounce
   - service: verify
     weight: 45
     type: unix
     chroot: y
     maxproc: 1
-    command: verify
+    ansible.builtin.command: verify
   - service: flush
     weight: 50
     type: unix
@@ -213,28 +213,28 @@ smtp_default_services:
     chroot: y
     wakeup: 1000?
     maxproc: 0
-    command: flush
+    ansible.builtin.command: flush
   - service: proxymap
     weight: 55
     type: unix
     chroot: n
-    command: proxymap
+    ansible.builtin.command: proxymap
   - service: proxywrite
     weight: 60
     type: unix
     chroot: n
     maxproc: 1
-    command: proxymap
+    ansible.builtin.command: proxymap
   - service: smtp
     weight: 65
     type: unix
     chroot: y
-    command: smtp
+    ansible.builtin.command: smtp
   - service: relay
     weight: 70
     type: unix
     chroot: y
-    command: smtp
+    ansible.builtin.command: smtp
     args:
       - -o syslog_name=postfix/$service_name
   - service: showq
@@ -242,58 +242,58 @@ smtp_default_services:
     type: unix
     private: n
     chroot: y
-    command: showq
+    ansible.builtin.command: showq
   - service: error
     weight: 80
     type: unix
     chroot: y
-    command: error
+    ansible.builtin.command: error
   - service: retry
     weight: 85
     type: unix
     chroot: y
-    command: error
+    ansible.builtin.command: error
   - service: discard
     weight: 90
     type: unix
     chroot: y
-    command: discard
+    ansible.builtin.command: discard
   - service: local
     weight: 95
     type: unix
     unpriv: n
     chroot: n
-    command: local
+    ansible.builtin.command: local
   - service: virtual
     weight: 100
     type: unix
     unpriv: n
     chroot: n
-    command: virtual
+    ansible.builtin.command: virtual
   - service: lmtp
     weight: 105
     type: unix
     chroot: y
-    command: lmtp
+    ansible.builtin.command: lmtp
   - service: anvil
     weight: 110
     type: unix
     chroot: y
     maxproc: 1
-    command: anvil
+    ansible.builtin.command: anvil
   - service: scache
     weight: 115
     type: unix
     chroot: y
     maxproc: 1
-    command: scache
+    ansible.builtin.command: scache
   - service: postlog
     weight: 120
     type: unix-dgram
     private: n
     chroot: n
     maxproc: 1
-    command: postlogd
+    ansible.builtin.command: postlogd
     enabled: "{{ True if ansible_distribution_version is version('20.04', '>=') else
       False }}"
 ```
