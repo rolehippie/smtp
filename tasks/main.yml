@@ -5,7 +5,7 @@
     - postfix-pcre
     - mailutils
     - bsd-mailx
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
@@ -14,7 +14,7 @@
 - name: Write aliases config
   notify:
     - Update aliases
-  template:
+  ansible.builtin.template:
     src: aliases.j2
     dest: /etc/aliases
     owner: root
@@ -26,7 +26,7 @@
 - name: Write destinations config
   notify:
     - Restart postfix
-  template:
+  ansible.builtin.template:
     src: destinations.j2
     dest: /etc/postfix/destinations.cf
     owner: root
@@ -38,7 +38,7 @@
 - name: Write dynamicmap config
   notify:
     - Restart postfix
-  template:
+  ansible.builtin.template:
     src: dynamicmaps.j2
     dest: /etc/postfix/dynamicmaps.cf
     owner: root
@@ -50,7 +50,7 @@
 - name: Write main config
   notify:
     - Restart postfix
-  template:
+  ansible.builtin.template:
     src: main.j2
     dest: /etc/postfix/main.cf
     owner: root
@@ -62,7 +62,7 @@
 - name: Write master config
   notify:
     - Restart postfix
-  template:
+  ansible.builtin.template:
     src: master.j2
     dest: /etc/postfix/master.cf
     owner: root
@@ -72,7 +72,7 @@
     - smtp
 
 - name: Start postfix service
-  systemd:
+  ansible.builtin.systemd:
     name: postfix
     state: started
     daemon_reload: True

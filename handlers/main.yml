@@ -1,17 +1,17 @@
 ---
 - name: Reload postfix
-  systemd:
+  ansible.builtin.systemd:
     name: postfix
     state: reloaded
     daemon_reload: True
 
 - name: Restart postfix
-  systemd:
+  ansible.builtin.systemd:
     name: postfix
     state: restarted
     daemon_reload: True
 
 - name: Update aliases
-  command: newaliases
+  ansible.builtin.command: newaliases
 
 ...
