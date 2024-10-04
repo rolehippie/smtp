@@ -1,7 +1,8 @@
 ---
 # https://www.postfix.org/postconf.5.html#compatibility_level
-# set to 0 to run latest mode
-compatibility_level: 2
+# https://www.postfix.org/COMPATIBILITY_README.html
+# set to 3.6 for recent mode
+smtp_compatibility_level: 2
 
 # @var smtp_hostname:description: Hostname written to postfix config
 smtp_hostname: "{{ ansible_fqdn }}"

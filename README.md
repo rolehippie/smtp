@@ -17,6 +17,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+
   - [smtp_default_aliases](#smtp_default_aliases)
   - [smtp_default_destinations](#smtp_default_destinations)
   - [smtp_default_master](#smtp_default_master)
@@ -38,6 +39,9 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [smtp_tls_cert_file](#smtp_tls_cert_file)
   - [smtp_tls_key_file](#smtp_tls_key_file)
   - [smtp_tls_security_level](#smtp_tls_security_level)
+  - [smtp_inet_interfaces](#smtp_inet_interfaces)
+  - [inet_protocols](#inet_protocols)
+  - [smtp_compatibility_level](#compatibility_level)  
 - [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
 - [License](#license)
@@ -472,6 +476,38 @@ Security level for TLS
 
 ```YAML
 smtp_tls_security_level: may
+```
+
+### smtp_inet_interfaces
+
+`all` or `loopback-only` or a list IPs where the daemon should listen on. see [inet_interfaces](https://www.postfix.org/postconf.5.html#inet_interfaces)
+
+#### Default value
+
+```YAML
+inet_interfaces:
+  - all
+```
+### smtp_inet_protocols
+
+a list of combination of `all`, `ipv4` or `ipv6` to definie wich IP stack postfix should working. see[inet_protocols](https://www.postfix.org/postconf.5.html#inet_protocols)
+
+#### Default value
+
+```YAML
+inet_interfaces:
+  - all
+```
+
+### smtp_compatibility_level
+
+This playbook default is set to 2 (at at the moment stays like this to avoid breakin changes). However the Postfix recommends it to set to `3.6` e.g. for new installs. see [COMPATIBILITY_README](https://www.postfix.org/COMPATIBILITY_README.html) or [compatibility_level](https://www.postfix.org/postconf.5.html#compatibility_level)
+
+#### Default value
+
+```YAML
+inet_interfaces:
+  - all
 ```
 
 ## Discovered Tags
