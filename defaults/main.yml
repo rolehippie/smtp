@@ -1,7 +1,16 @@
 ---
-# https://www.postfix.org/postconf.5.html#compatibility_level
-# https://www.postfix.org/COMPATIBILITY_README.html
-# set to 3.6 for recent mode
+# @var smtp_compatibility_level:description: Relevant packages wich will be installed. postfix as minimum
+smtp_packages:
+    - postfix
+    - postfix-pcre
+    - mailutils
+    - bsd-mailx
+
+# @var smtp_compatibility_level:description>
+# This playbook default is set to 2 (at at the moment stays like this to avoid breakin changes). However the Postfix recommends it to set to `3.6` e.g. for new installs. 
+# - [COMPATIBILITY_README](https://www.postfix.org/COMPATIBILITY_README.html)
+# - [compatibility_level](https://www.postfix.org/postconf.5.html#compatibility_level)
+# @end
 smtp_compatibility_level: 2
 
 # @var smtp_hostname:description: Hostname written to postfix config
@@ -280,13 +289,22 @@ smtp_extra_services: []
 # @var smtp_myorigin:description: Origin used by postfix
 smtp_myorigin: /etc/mailname
 
-# https://www.postfix.org/postconf.5.html#inet_interfaces
+# @var smtp_inet_interfaces:description>
+# `all` or `loopback-only` or a list IPs where the daemon should listen on. 
+# [inet_interfaces](https://www.postfix.org/postconf.5.html#inet_interfaces)
+# @end
+
 smtp_inet_interfaces: 
   # - all
   - loopback-only
   # - 192.168.1.2
   # - 127.0.0.1
   
+  # @var smtp_inet_protocols:description>
+# a list of combination of `all`, `ipv4` or `ipv6` to definie wich IP stack postfix should working. 
+# [inet_protocols](https://www.postfix.org/postconf.5.html#inet_protocols)
+# @end
+
 smtp_inet_protocols: 
   - all
   # - ipv4

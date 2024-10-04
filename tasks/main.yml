@@ -1,15 +1,8 @@
 ---
 - name: Install required packages
-  loop:
-    - postfix
-    - postfix-pcre
-    - mailutils
-    - bsd-mailx
   ansible.builtin.package:
-    name: "{{ item }}"
+    name: "{{ smtp_packages }}"
     state: present
-  tags:
-    - smtp
 
 - name: Write aliases config
   notify:
@@ -26,26 +19,26 @@
 - name: Write destinations config
   notify:
     - Restart postfix
+  when: smtp_match_destinations
   ansible.builtin.template:
     src: destinations.j2
     dest: /etc/postfix/destinations.cf
     owner: root
     group: root
     mode: u=rw,g=r,o=r
-  when: smtp_match_destinations    
   tags:
     - smtp
 
 - name: Write dynamicmap config
   notify:
     - Restart postfix
+  when: smtp_dynamic_maps
   ansible.builtin.template:
     src: dynamicmaps.j2
     dest: /etc/postfix/dynamicmaps.cf
     owner: root
     group: root
     mode: u=rw,g=r,o=r
-  when: smtp_dynamic_maps    
   tags:
     - smtp
 
@@ -82,5 +75,3 @@
     enabled: True
   tags:
     - smtp
-
-...
