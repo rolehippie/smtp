@@ -8,7 +8,7 @@ smtpd_banner = $myhostname ESMTP $mail_name
 biff = no
 append_dot_mydomain = no
 readme_directory = no
-compatibility_level = 2
+compatibility_level = {{ smtp_compatibility_level }}
 
 smtpd_tls_cert_file={{ smtp_tls_cert_file }}
 smtpd_tls_key_file={{ smtp_tls_key_file }}
@@ -27,5 +27,5 @@ alias_database = hash:/etc/aliases
 relayhost = {{ (smtp_default_relayhosts + smtp_extra_relayhosts) | join(' ') }}
 mailbox_size_limit = 0
 recipient_delimiter = +
-inet_interfaces = all
-inet_protocols = all
+inet_interfaces = {{ smtp_inet_interfaces | join(',') }}
+inet_protocols = {{ smtp_inet_protocols | join(',') }}

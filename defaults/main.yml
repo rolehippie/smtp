@@ -1,4 +1,14 @@
 ---
+# @var smtp_packages:description: List of packages to install with postfix
+smtp_packages:
+    - postfix
+    - postfix-pcre
+    - mailutils
+    - bsd-mailx
+
+# @var smtp_compatibility_level:description: Compatibility level, should be set to 3.6 for new installations. For more details check the [documentation](https://www.postfix.org/postconf.5.html#compatibility_level)
+smtp_compatibility_level: 2
+
 # @var smtp_hostname:description: Hostname written to postfix config
 smtp_hostname: "{{ ansible_fqdn }}"
 
@@ -274,5 +284,24 @@ smtp_extra_services: []
 
 # @var smtp_myorigin:description: Origin used by postfix
 smtp_myorigin: /etc/mailname
+
+# @var smtp_inet_interfaces:description: List of interfaces to bind, also supports `all` or `loopback-only`
+# @var smtp_inet_interfaces:example: >
+# smtp_inet_interfaces:
+#   - loopback-only
+#   - 192.168.1.2
+#   - 127.0.0.1
+# @end
+smtp_inet_interfaces:
+  - loopback-only
+
+# @var smtp_inet_protocols:description: List of supported IP protocol versions, also supports `all`
+# @var smtp_inet_protocols:example: >
+# smtp_inet_protocols:
+#   - ipv4
+#   - ipv6
+# @end
+smtp_inet_protocols:
+  - all
 
 ...

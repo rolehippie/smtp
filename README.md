@@ -17,6 +17,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
+  - [smtp_compatibility_level](#smtp_compatibility_level)
   - [smtp_default_aliases](#smtp_default_aliases)
   - [smtp_default_destinations](#smtp_default_destinations)
   - [smtp_default_master](#smtp_default_master)
@@ -31,8 +32,11 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [smtp_extra_relayhosts](#smtp_extra_relayhosts)
   - [smtp_extra_services](#smtp_extra_services)
   - [smtp_hostname](#smtp_hostname)
+  - [smtp_inet_interfaces](#smtp_inet_interfaces)
+  - [smtp_inet_protocols](#smtp_inet_protocols)
   - [smtp_match_destinations](#smtp_match_destinations)
   - [smtp_myorigin](#smtp_myorigin)
+  - [smtp_packages](#smtp_packages)
   - [smtp_relay_restrictions](#smtp_relay_restrictions)
   - [smtp_tls_ca_path](#smtp_tls_ca_path)
   - [smtp_tls_cert_file](#smtp_tls_cert_file)
@@ -50,6 +54,16 @@ Building and improving this Ansible role have been sponsored by my current and p
 - Minimum Ansible version: `2.10`
 
 ## Default Variables
+
+### smtp_compatibility_level
+
+Compatibility level, should be set to 3.6 for new installations. For more details check the [documentation](https://www.postfix.org/postconf.5.html#compatibility_level)
+
+#### Default value
+
+```YAML
+smtp_compatibility_level: 2
+```
 
 ### smtp_default_aliases
 
@@ -394,6 +408,45 @@ Hostname written to postfix config
 smtp_hostname: '{{ ansible_fqdn }}'
 ```
 
+### smtp_inet_interfaces
+
+List of interfaces to bind, also supports `all` or `loopback-only`
+
+#### Default value
+
+```YAML
+smtp_inet_interfaces:
+  - loopback-only
+```
+
+#### Example usage
+
+```YAML
+smtp_inet_interfaces:
+  - loopback-only
+  - 192.168.1.2
+  - 127.0.0.1
+```
+
+### smtp_inet_protocols
+
+List of supported IP protocol versions, also supports `all`
+
+#### Default value
+
+```YAML
+smtp_inet_protocols:
+  - all
+```
+
+#### Example usage
+
+```YAML
+smtp_inet_protocols:
+  - ipv4
+  - ipv6
+```
+
 ### smtp_match_destinations
 
 List of regexp matching destinations
@@ -419,6 +472,20 @@ Origin used by postfix
 
 ```YAML
 smtp_myorigin: /etc/mailname
+```
+
+### smtp_packages
+
+List of packages to install with postfix
+
+#### Default value
+
+```YAML
+smtp_packages:
+  - postfix
+  - postfix-pcre
+  - mailutils
+  - bsd-mailx
 ```
 
 ### smtp_relay_restrictions
