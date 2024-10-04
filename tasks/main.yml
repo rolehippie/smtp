@@ -1,22 +1,8 @@
 ---
 - name: Install required packages
-  ansible.builtin.package:
-    name: "{{ smtp_packages }}"
-    state: present
-
-- name: Write aliases config
-  notify:
-    - Update aliases
-  ansible.builtin.template:
-    src: aliases.j2
-    dest: /etc/aliases
-    owner: root
-    group: root
     mode: u=rw,g=r,o=r
-  tags:
+    name: "{{ smtp_packages }}"
     - smtp
-
-- name: Write destinations config
   notify:
     - Restart postfix
   when: smtp_match_destinations
@@ -26,13 +12,14 @@
     owner: root
     group: root
     mode: u=rw,g=r,o=r
+  when: smtp_match_destinations
   tags:
     - smtp
 
 - name: Write dynamicmap config
   notify:
     - Restart postfix
-  when: smtp_dynamic_maps
+  when: smtp_match_destinations
   ansible.builtin.template:
     src: dynamicmaps.j2
     dest: /etc/postfix/dynamicmaps.cf
@@ -45,14 +32,13 @@
 - name: Write main config
   notify:
     - Restart postfix
-  ansible.builtin.template:
+  when: smtp_dynamic_maps
     src: main.j2
     dest: /etc/postfix/main.cf
     owner: root
     group: root
     mode: u=rw,g=r,o=r
   tags:
-    - smtp
 
 - name: Write master config
   notify:
@@ -75,3 +61,5 @@
     enabled: True
   tags:
     - smtp
+
+...
