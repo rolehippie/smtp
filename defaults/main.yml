@@ -1,5 +1,5 @@
 ---
-# @var smtp_compatibility_level:description: Relevant packages wich will be installed. postfix as minimum
+# @var smtp_packages:description: Relevant packages wich will be installed. postfix as minimum
 smtp_packages:
     - postfix
     - postfix-pcre
@@ -300,7 +300,7 @@ smtp_inet_interfaces:
   # - 192.168.1.2
   # - 127.0.0.1
   
-  # @var smtp_inet_protocols:description>
+# @var smtp_inet_protocols:description>
 # a list of combination of `all`, `ipv4` or `ipv6` to definie wich IP stack postfix should working. 
 # [inet_protocols](https://www.postfix.org/postconf.5.html#inet_protocols)
 # @end
