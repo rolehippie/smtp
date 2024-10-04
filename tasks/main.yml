@@ -32,6 +32,7 @@
     owner: root
     group: root
     mode: u=rw,g=r,o=r
+  when: smtp_match_destinations    
   tags:
     - smtp
 
@@ -44,6 +45,7 @@
     owner: root
     group: root
     mode: u=rw,g=r,o=r
+  when: smtp_dynamic_maps    
   tags:
     - smtp
 
