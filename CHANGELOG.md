@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/rolehippie/smtp/compare/v2.0.0...v2.1.0) (2024-10-26)
+
+
+### Features
+
+* add mire flexible options for packages, compatibility, interfaces and protocols ([16338af](https://github.com/rolehippie/smtp/commit/16338af5c4b3a25fe8fb747b41c730437a4a6168))
+
 ## [2.0.0](https://github.com/rolehippie/smtp/compare/v1.0.0...v2.0.0) (2024-02-12)
 
 
