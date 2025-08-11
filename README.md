@@ -1,4 +1,4 @@
-# smtp
+# workspace
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp)
 [![General Workflow](https://github.com/rolehippie/smtp/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/smtp/actions/workflows/general.yml)
@@ -544,7 +544,6 @@ smtp_tls_security_level: may
 ## Discovered Tags
 
 **_smtp_**
-
 
 ## Dependencies
 
