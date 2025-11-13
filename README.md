@@ -1,4 +1,4 @@
-# workspace
+# smtp
 
 [![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/smtp)
 [![General Workflow](https://github.com/rolehippie/smtp/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/smtp/actions/workflows/general.yml)
@@ -308,8 +308,8 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ True if ansible_distribution_version is version('20.04', '>=') else
-      False }}"
+    enabled: "{{ true if ansible_distribution_version is version('20.04', '>=') else
+      false }}"
 ```
 
 ### smtp_dynamic_maps

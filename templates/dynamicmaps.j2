@@ -1,3 +1,3 @@
 {% for item in smtp_dynamic_maps %}
-{{ item.type }} {{ item.soname }} {{ item.dict }}{{ ' ' + item.mkmap if item.mkmap | default(False) else '' }}
+{{ item.type }} {{ item.soname }} {{ item.dict }}{{ ' ' + item.mkmap if item.mkmap | default(false) else '' }}
 {% endfor %}
