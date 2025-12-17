@@ -1,10 +1,10 @@
 ---
 # @var smtp_packages:description: List of packages to install with postfix
 smtp_packages:
-    - postfix
-    - postfix-pcre
-    - mailutils
-    - bsd-mailx
+  - postfix
+  - postfix-pcre
+  - mailutils
+  - bsd-mailx
 
 # @var smtp_compatibility_level:description: Compatibility level, should be set to 3.6 for new installations. For more details check the [documentation](https://www.postfix.org/postconf.5.html#compatibility_level)
 smtp_compatibility_level: 2

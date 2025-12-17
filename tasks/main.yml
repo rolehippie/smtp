@@ -21,7 +21,7 @@
 
 - name: Write destinations config
   when:
-    - smtp_match_destinations | default(false)
+    - smtp_match_destinations | length > 0
   notify:
     - Restart postfix
   ansible.builtin.template:
@@ -35,7 +35,7 @@
 
 - name: Write dynamicmap config
   when:
-    - smtp_dynamic_maps | default(false)
+    - smtp_dynamic_maps | length > 0
   notify:
     - Restart postfix
   ansible.builtin.template:

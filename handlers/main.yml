@@ -12,6 +12,7 @@
     daemon_reload: true
 
 - name: Update aliases
+  changed_when: false
   ansible.builtin.command: newaliases
 
 ...
