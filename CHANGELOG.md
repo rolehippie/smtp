@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/rolehippie/smtp/compare/v2.2.0...v2.2.1) (2025-12-22)
+
+
+### Bugfixes
+
+* make linting really happy again ([bd2d7cd](https://github.com/rolehippie/smtp/commit/bd2d7cd0f36fa36da0dd8eb17c9171c1c840f17c))
+
 ## [2.2.0](https://github.com/rolehippie/smtp/compare/v2.1.0...v2.2.0) (2025-11-17)
 
 
