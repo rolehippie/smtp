@@ -308,8 +308,7 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ true if ansible_distribution_version is version('20.04', '>=') else
-      false }}"
+    enabled: "{{ true if ansible_distribution_version is version('20.04', '>=') else false }}"
 ```
 
 ### smtp_dynamic_maps
