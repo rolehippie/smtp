@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.5.1](https://github.com/rolehippie/smtp/compare/v2.5.0...v2.5.1) (2026-08-31)
+
+### Dependencies
+
+* **patch:** update dependency pipx:ansible-doctor to v8.4.1 ([#50](https://github.com/rolehippie/smtp/issues/50)) ([94096dc](https://github.com/rolehippie/smtp/commit/94096dcf0b47829e5f7a12ae725818bd8a094afd))
+
 ## [2.5.0](https://github.com/rolehippie/smtp/compare/v2.4.0...v2.5.0) (2026-08-17)
 
 ### Dependencies
