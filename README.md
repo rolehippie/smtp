@@ -404,7 +404,7 @@ Hostname written to postfix config
 #### Default value
 
 ```YAML
-smtp_hostname: '{{ ansible_facts['fqdn'] }}'
+smtp_hostname: "{{ ansible_facts['fqdn'] }}"
 ```
 
 ### smtp_inet_interfaces
