@@ -10,7 +10,7 @@ smtp_packages:
 smtp_compatibility_level: 2
 
 # @var smtp_hostname:description: Hostname written to postfix config
-smtp_hostname: "{{ ansible_fqdn }}"
+smtp_hostname: "{{ ansible_facts['fqdn'] }}"
 
 # @var smtp_default_destinations:description: List of default postfix destinations
 smtp_default_destinations:
@@ -277,7 +277,7 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ true if ansible_distribution_version is version('20.04', '>=') else false }}"
+    enabled: "{{ true if ansible_facts['distribution_version'] is version('20.04', '>=') else false }}"
 
 # @var smtp_extra_master:description: List of extra postfix services
 smtp_extra_services: []

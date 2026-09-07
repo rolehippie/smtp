@@ -308,7 +308,7 @@ smtp_default_services:
     chroot: n
     maxproc: 1
     command: postlogd
-    enabled: "{{ true if ansible_distribution_version is version('20.04', '>=') else false }}"
+    enabled: "{{ true if ansible_facts['distribution_version'] is version('20.04', '>=') else false }}"
 ```
 
 ### smtp_dynamic_maps
@@ -404,7 +404,7 @@ Hostname written to postfix config
 #### Default value
 
 ```YAML
-smtp_hostname: '{{ ansible_fqdn }}'
+smtp_hostname: '{{ ansible_facts['fqdn'] }}'
 ```
 
 ### smtp_inet_interfaces
